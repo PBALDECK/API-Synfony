@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ book.name }}{% endblock %}
+
+{% block body %}
+    <table class="table bordered">
+        <tr>
+            <td>#</td>
+            <td>Nom</td>
+            <td>Description</td>
+            <td>Prix</td>
+            <td>Catégories</td>
+        </tr>
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.name }}</td>
+            <td>{{ book.description }}</td>
+            <td>{{ book.price }}</td>
+            <td>
+                {% for category in book.categories %}
+                    <span class="new badge" data-badge-caption="">{{ category.name }}</span>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+{% endblock %}

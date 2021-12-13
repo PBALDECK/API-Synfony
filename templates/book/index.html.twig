@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des livres{% endblock %}
+
+{% block body %}
+    <table class="table bordered">
+        <tr>
+            <td>#</td>
+            <td>Nom</td>
+            <td>Description</td>
+            <td>Prix</td>
+            <td></td>
+        </tr>
+
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.description }}</td>
+                <td>{{ book.price }}</td>
+                <td>
+                    <a href="{{ path('book_show', {'id': book.id}) }}">Voir</a>
+                    <a href="{{ path('book_edit', {'id': book.id}) }}">Editer</a>
+                    <a href="{{ path('book_delete', {'id': book.id, 'token': csrf_token('delete_book')}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
